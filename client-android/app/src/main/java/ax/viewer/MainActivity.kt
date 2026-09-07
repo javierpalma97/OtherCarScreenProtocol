@@ -215,7 +215,12 @@ class MainActivity : Activity() {
             try {
                 while (!stop.get()) {
                     val t0 = System.currentTimeMillis()
-                    send(AxMessage.Ping(t0.toDouble()))
+                    try {
+                        send(AxMessage.Ping(t0.toDouble()))
+                    } catch (e: Exception) {
+                        Log.d(TAG, "ping send failed: $e")
+                        break
+                    }
                     Thread.sleep(2000)
                 }
             } catch (_: Exception) { }
@@ -228,6 +233,12 @@ class MainActivity : Activity() {
                     if (m is AxMessage.Pong) {
                         lastRttMs = System.currentTimeMillis() - m.t.toLong()
                         updateOverlay()
+                    } else if (m is AxMessage.Ping) {
+                        try {
+                            send(AxMessage.Pong(m.t))
+                        } catch (e: Exception) {
+                            Log.d(TAG, "pong send failed: $e")
+                        }
                     }
                 }
             }

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+out/
+*.log
+touch_overlay.txt
+server.out.log
+server.err.log
+live.jar
+emu.out.log
+emu.err.log
+.gradle/
+build/
+local.properties
+*.iml

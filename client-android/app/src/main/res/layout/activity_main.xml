@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:keepScreenOn="true">
+
+    <SurfaceView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Connect panel -->
+    <LinearLayout
+        android:id="@+id/connectPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="#CC111111">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AX Viewer — visor CarPlay"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/connectStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscando servidor…"
+            android:textColor="#AAAAAA" />
+
+        <EditText
+            android:id="@+id/ipField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="IP manual (p. ej. 192.168.1.50)"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#777777"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/connectBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Conectar" />
+    </LinearLayout>
+
+    <!-- Side bar -->
+    <LinearLayout
+        android:id="@+id/sideBar"
+        android:layout_width="64dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#AA111111"
+        android:visibility="gone">
+
+        <Button android:id="@+id/btnHome" android:layout_width="56dp" android:layout_height="56dp" android:text="H" />
+        <Button android:id="@+id/btnBack" android:layout_width="56dp" android:layout_height="56dp" android:text="&lt;" />
+        <Button android:id="@+id/btnVolUp" android:layout_width="56dp" android:layout_height="56dp" android:text="V+" />
+        <Button android:id="@+id/btnVolDown" android:layout_width="56dp" android:layout_height="56dp" android:text="V-" />
+        <Button android:id="@+id/btnDisc" android:layout_width="56dp" android:layout_height="56dp" android:text="X" />
+    </LinearLayout>
+
+    <!-- Status overlay -->
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="8dp"
+        android:background="#AA000000"
+        android:padding="6dp"
+        android:text=""
+        android:textColor="#00FF88"
+        android:textSize="12sp"
+        android:visibility="gone" />
+</FrameLayout>

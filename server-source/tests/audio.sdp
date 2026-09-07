@@ -1,0 +1,7 @@
+v=0
+o=- 0 0 IN IP4 127.0.0.1
+s=AXLink audio
+c=IN IP4 127.0.0.1
+t=0 0
+m=audio 50004 RTP/AVP 97
+a=rtpmap:97 OPUS/48000/2

@@ -82,17 +82,25 @@ class MainActivity : Activity() {
         super.onDestroy()
     }
 
+    // Sin botones propios: todo es táctil dentro del vídeo.
+    // Atrás del sistema = desconectar y volver al panel.
+    @Deprecated("uso directo para API < 33")
+    override fun onBackPressed() {
+        if (connectPanel.visibility != View.VISIBLE) stopSession()
+        else super.onBackPressed()
+    }
+
     // ---------- UI helpers ----------
 
     private fun setStatus(s: String, connecting: Boolean) = runOnUiThread {
+        // La barra lateral no se muestra nunca: solo botones in-video.
+        sideBar.visibility = View.GONE
         if (connecting) {
             connectPanel.visibility = View.VISIBLE
-            sideBar.visibility = View.GONE
             status.visibility = View.GONE
             connectStatus.text = s
         } else {
             connectPanel.visibility = View.GONE
-            sideBar.visibility = View.VISIBLE
             status.visibility = View.VISIBLE
             status.text = s
         }

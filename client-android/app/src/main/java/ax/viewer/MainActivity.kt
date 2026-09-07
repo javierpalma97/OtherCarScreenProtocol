@@ -54,7 +54,11 @@ class MainActivity : Activity() {
         connectStatus = findViewById(R.id.connectStatus)
         ipField = findViewById(R.id.ipField)
         findViewById<Button>(R.id.connectBtn).setOnClickListener {
-            startSession(ipField.text.toString().trim().ifEmpty { null })
+            // Limpia TODO el espacio (el teclado a veces mete espacios/gestos
+            // que trim() no quita si van entre caracteres).
+            val clean = ipField.text.toString().filter { !it.isWhitespace() }
+            ipField.setText(clean)
+            startSession(clean.ifEmpty { null })
         }
         findViewById<Button>(R.id.btnHome).setOnClickListener { sendKey("home") }
         findViewById<Button>(R.id.btnBack).setOnClickListener { sendKey("back") }
